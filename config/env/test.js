@@ -28,16 +28,17 @@ module.exports = {
 			host: process.env.MAILER_SMTP_HOST || '',
 			port: process.env.MAILER_SMTP_PORT || 587,
 			secure: (process.env.MAILER_SMTP_SECURE === 'TRUE'),
-			auth: {
-				user: process.env.MAILER_EMAIL_ID || '',
-				pass: process.env.MAILER_PASSWORD || ''
-			}
+			requireTLS: (process.env.MAILER_SMTP_SECURE === 'STARTTLS'),
+			auth: process.env.MAILER_EMAIL_ID ? {
+				user: process.env.MAILER_EMAIL_ID,
+				pass: process.env.MAILER_PASSWORD
+			} : null
 		} : {
 			service: process.env.MAILER_SERVICE_PROVIDER || '',
-			auth: {
-				user: process.env.MAILER_EMAIL_ID || '',
-				pass: process.env.MAILER_PASSWORD || ''
-			}
+			auth: process.env.MAILER_EMAIL_ID ? {
+				user: process.env.MAILER_EMAIL_ID,
+				pass: process.env.MAILER_PASSWORD
+			} : null
 		}
 	}
 };
