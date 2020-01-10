@@ -23,7 +23,7 @@ module.exports = {
         }
     },
     sessionCookie: {
-		secure: false,
+		secure: process.env.IS_SECURE === 'TRUE',
 		maxAge:  24 * 60 * 60 * 1000, // 24 hours
 		domain: process.env.BASE_URL || '.ohmyform.com'
 	},

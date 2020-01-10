@@ -67,7 +67,7 @@ module.exports = {
 		// only when SSL-enabled (HTTPS) is used, and otherwise it won't
 		// set a cookie. 'true' is recommended yet it requires the above
 		// mentioned pre-requisite.
-		secure: false,
+		secure: process.env.IS_SECURE === 'TRUE',
 		// Only set the maxAge to null if the cookie shouldn't be expired
 		// at all. The cookie will expunge when the browser is closed.
 		maxAge:  24 * 60 * 60 * 1000 // 24 hours
